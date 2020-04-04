@@ -60,6 +60,7 @@
 //rcc
 import React, {Component} from 'react';
 import axios from "axios";
+import Movie from "./Movie";
 
 class App extends Component {
     //상태나 함수 선언분 부분.
@@ -91,9 +92,16 @@ class App extends Component {
 
         return ( //실질적 html
             <div>
-                {isLoading ? "Loading..." : movies.map(movie => {
-                    
-                })}
+                {isLoading ? "Loading..." : movies.map(movie => (
+                    <Movie
+                        key={movie.id} //map
+                        poster={movie.small_cover_image}
+                        summary={movie.summary}
+                        year={movie.year}
+                        id={movie.id}
+                        title={movie.title_long}
+                    />
+                ))}
             </div>
         );
     }
