@@ -59,6 +59,7 @@
 
 //rcc
 import React, {Component} from 'react';
+import axios from "axios";
 
 class App extends Component {
     //상태나 함수 선언분 부분.
@@ -67,11 +68,13 @@ class App extends Component {
         movies: []
     };
 
+    getMovies = async () => {
+        const movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
+    }
+
     // Life Cycle 함수.
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ isLoading: false });
-        },6000)
+        this.getMovies();
     }
 
     render() {
