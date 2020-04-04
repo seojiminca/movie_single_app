@@ -76,6 +76,19 @@ class App extends Component {
         this.setState(current => ({count: current.count - 1}));
     };
 
+    // Life Cycle 함수.
+    componentDidMount() {
+        console.log('componentDidMount')
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+    }
+
     render() {
         //리턴에서 사용될 상태나 함수를 재선언해주는 부분.
         return ( //실질적 html
