@@ -62,11 +62,27 @@ import React, {Component} from 'react';
 
 class App extends Component {
     //상태나 함수 선언분 부분.
+    state = {
+        count: 0
+    };
+
+    add = () => {
+        //console.log("add");
+        this.setState(current => ({count: current.count + 1}));
+    };
+
+    minus = () => {
+        //console.log("minus");
+        this.setState(current => ({count: current.count - 1}));
+    };
+
     render() {
         //리턴에서 사용될 상태나 함수를 재선언해주는 부분.
         return ( //실질적 html
             <div>
-                <h1>jimin app</h1>
+                <h1>The number is: {this.state.count}</h1>
+                <button onClick={this.add}>Add</button>
+                <button onClick={this.minus}>Minus</button>
             </div>
         );
     }
