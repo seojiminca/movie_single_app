@@ -69,7 +69,13 @@ class App extends Component {
     };
 
     getMovies = async () => {
-        const movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
+        const {
+            data: { //전체 데이터 중의
+                data: { movies } // 데이터 movies.
+            }
+        } = await axios.get("https://yts.mx/api/v2/list_movies.json");
+
+        this.setState({movies, isLoading: false}) //movies: movies
     }
 
     // Life Cycle 함수.
@@ -81,9 +87,13 @@ class App extends Component {
         //리턴에서 사용될 상태나 함수를 재선언해주는 부분.
         const {isLoading, movies} = this.state;
 
+        console.log(movies)
+
         return ( //실질적 html
             <div>
-                {isLoading ? "Loading..." : "We are ready"}
+                {isLoading ? "Loading..." : movies.map(movie => {
+                    
+                })}
             </div>
         );
     }
