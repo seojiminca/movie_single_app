@@ -61,6 +61,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import Movie from "./Movie";
+import "./App.css";
 
 class App extends Component {
     //상태나 함수 선언분 부분.
@@ -91,17 +92,24 @@ class App extends Component {
         console.log(movies)
 
         return ( //실질적 html
-            <div>
-                {isLoading ? "Loading..." : movies.map(movie => (
-                    <Movie
-                        key={movie.id} //map
-                        poster={movie.small_cover_image}
-                        summary={movie.summary}
-                        year={movie.year}
-                        id={movie.id}
-                        title={movie.title_long}
-                    />
-                ))}
+            <div className="container">
+                {isLoading ? (
+                    <div className="loader">Loading...</div>
+                ) : (
+                    <div className="movies">
+                        {/*JavaScript적용해야되니까 {} 넣어주기*/}
+                        {movies.map(movie => (
+                            <Movie
+                                key={movie.id} //map
+                                poster={movie.medium_cover_image}
+                                summary={movie.summary}
+                                year={movie.year}
+                                id={movie.id}
+                                title={movie.title_long}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         );
     }
